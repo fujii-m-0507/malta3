@@ -1,0 +1,289 @@
+@charset "UTF-8";
+
+/* 共通部分 */
+html{
+    font-style: 100%;
+}
+body{
+    font-family: 'Philosopher', serif;
+    line-height: 1.7;
+    color: #432;
+}
+nav.NavMenu{
+    display: none;
+}
+.Toggle{
+    display: none;
+}
+a{
+    text-decoration: none;
+}
+img{
+    max-width: 100%;
+}
+/*header*/
+.logo{
+    width: 210px;
+    margin-top: 14px;
+}
+.main-nav {
+    display: flex;
+    font-size: 1.25rem;
+    text-transform: uppercase;/*全部大文字強制変換*/
+    margin-top: 34px;
+    list-style: none;
+}
+.main-nav li {
+    margin-left: 36px;
+}
+.main-nav a {
+    color: #432;
+}
+.main-nav a:hover { /*カーソル乗せたときに色が変わる*/
+    color: #0bd;
+}
+.page-header {
+    display: flex;
+    justify-content: space-between;
+}
+.wrapper { /* wrapper全体を囲む設定にする 最大幅を設定できる */
+    max-width: 1500px; /*離れすぎないように*/
+    margin: 0 auto;
+    padding: 0 4%;
+}
+header h1 {
+    font-size: 0.7em;
+}
+/*home*/
+.home-content {
+    text-align: center;
+    margin-top: 10%;/*何に対する％？*/
+}
+.home-content p {
+    font-size: 2rem;
+    font-style: 1.125em;
+    margin: 10px 0 42px;
+}
+
+/* 見出し ----------------------------------*/
+.page-title {
+    font-size: 5rem;
+    text-transform: uppercase;
+    font-weight: normal;
+}
+
+/* ボタン */
+.button {
+    font-size: 1.375rem;
+    background: rgb(182, 24, 24);
+    color: #fff;
+    border-radius: 5px;
+    padding: 18px 32px;
+}
+.button:hover {
+    background: rgb(105, 105, 105);
+}
+
+/*背景画像*/
+.big-bg{
+    background-size: cover;
+    background-position: center top;/*上から表示する。下が切れる。*/
+}
+#home{
+    background-image: url(../images/valetta.jpg);
+    /* background-color: #0bd; */
+    /* background-blend-mode: screen; */
+    /* background-image: linear-gradient(#c9ffbf, #ffafbd); */
+    /* background-image: radial-gradient(#c9ffbf, #ffafbd); */
+    min-height: 120vh;
+}
+#home .page-title{
+    text-transform: none;
+}
+/* モバイル版 -------------------------------------------------------------------*/
+@media(max-width: 600px){
+    .page-title{
+        font-size: 2.0em;
+    }
+     /* HEADER */
+     .main-nav{
+        display: none;
+         font-size: 1rem;
+        margin-top: 10px;
+    }
+    .main-nav li{
+         margin: 0 20px;
+         display: none;
+     }
+    /* index--------------------------- */
+    .home-content{
+        margin-top: 20%;
+    }
+    .home-content p {
+        font-size: 1em;
+    }
+    .page-header{
+        flex-direction: column;
+        align-items: center;
+    }
+    .big-bg{
+        background-position: 17% center;
+    }
+    /* NEWS */
+    .news-contents{
+        flex-direction: column;
+    }
+    article,
+    aside{
+        width: 100%;
+    }
+    #news .page-title{
+        margin-top: 30px;
+    }
+    aside{
+        margin-top: 30px;
+    }
+    .post-info{
+        margin-bottom: 30px;
+    }
+    .post-date{
+        width: 70px;
+        height: 70px;
+        font-size: 1rem;
+    }
+    .post-date span {
+        font-size: 0.875rem;
+        padding-top: 2px;
+    }
+    .post-title {
+        font-size: 1.375rem;
+    }
+    .post-cat {
+        font-size: 0.875rem;
+        margin-top: 10px;
+    }
+    .post-title,
+    .post-cat {
+        margin-left: 80px;
+    }
+    /* ハンバーガーメニュー ------------------------*/
+
+    nav.NavMenu {
+    position: fixed;
+    /*表示位置を固定*/
+    z-index: 2;
+    /*重ね順を変更*/
+    top: 0;
+    /*表示位置を指定*/
+    left: 0;
+    /*表示位置を指定*/
+    background: #fff;
+    /*背景を白にする*/
+    color: #000;
+    /*文字色を黒にする*/
+    text-align: center;
+    /*テキストを中央揃え*/
+    width: 100%;
+    /*全幅表示*/
+    transform: translateY(-100%);
+    /*ナビを上に隠す*/
+    transition: all 0.6s;
+    /*アニメーションの時間を指定*/
+    }
+
+nav.NavMenu ul {
+    background: #ccc;
+    /*背景をグレーにする*/
+
+    width: 100%;
+    margin: 0 auto;
+    padding: 0;
+}
+
+nav.NavMenu ul li {
+    font-size: 1.1em;
+    list-style-type: none;
+    padding: 0;
+    width: 100%;
+    border-bottom: 1px dotted #333;
+}
+
+nav.NavMenu ul li:last-child {
+    padding-bottom: 0;
+
+    /*最後のメニュー項目のみ下線を消す*/
+    border-bottom: none;
+}
+
+nav.NavMenu ul li a {
+    display: block;
+    /*クリックできる領域を広げる*/
+    color: #000;
+    padding: 1em 0;
+}
+
+nav.NavMenu.active {
+    transform: translateY(0%);
+    /*ナビを表示する*/
+}
+
+.Toggle {
+    display: block;
+    position: fixed;
+    /* bodyに対しての絶対位置指定 */
+    right: 13px;
+    top: 12px;
+    width: 42px;
+    height: 42px;
+    cursor: pointer;
+    z-index: 3;
+}
+
+.Toggle span {
+    display: block;
+    position: absolute;
+    width: 30px;
+    border-bottom: solid 3px #000;
+    -webkit-transition: .35s ease-in-out;
+    /*変化の速度を指定*/
+    -moz-transition: .35s ease-in-out;
+    /*変化の速度を指定*/
+    transition: .35s ease-in-out;
+    /*変化の速度を指定*/
+    left: 6px;
+}
+
+.Toggle span:nth-child(1) {
+    top: 9px;
+}
+
+.Toggle span:nth-child(2) {
+    top: 18px;
+}
+
+.Toggle span:nth-child(3) {
+    top: 27px;
+}
+
+/* 最初のspanをマイナス45度に */
+.Toggle.active span:nth-child(1) {
+    top: 18px;
+    left: 6px;
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+}
+
+/* 2番目と3番目のspanを45度に */
+.Toggle.active span:nth-child(2),
+.Toggle.active span:nth-child(3) {
+    top: 18px;
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+#fade {
+    display: none;
+}
+}
